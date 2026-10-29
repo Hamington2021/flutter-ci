@@ -2,7 +2,7 @@ name: Flutter checks and APK delivery
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 permissions:
   contents: read
@@ -38,10 +38,3 @@ jobs:
 
       - name: Run unit and widget tests
         run: flutter test
-
-      - name: Build the Android debug APK
-        run: |
-          chmod +x android/gradlew
-          flutter build apk --debug
-
-
