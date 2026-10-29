@@ -8,34 +8,7 @@ code, run the tests, build an Android APK, and make it available to download.
 working **+** button. Tests, minus/reset buttons, and the workflow are added
 during the activity; they are intentionally absent at the start.
 
-## 1. Prepare your tools
-
-- Install **Flutter 3.47.1 stable** with its bundled Dart SDK. CI uses this exact
-  version too. Check `flutter --version` before class.
-- Install **Git**, Android Studio, and an editor such as Android Studio or VS Code.
-- In Android Studio's SDK Manager, install the Android SDK/platform tools and
-  **Android SDK Platform 36**. Use the SDK/NDK versions requested by the supplied
-  project if the first Android build prompts for additional components.
-- Create an Android emulator in **Device Manager**, start it, and wait until its
-  home screen is responsive. An Android phone with USB debugging also works.
-- Have a **GitHub account** and a repository you can push to.
-
-Run these commands in a terminal:
-
-```text
-flutter --version
-git --version
-flutter doctor
-flutter doctor --android-licenses
-flutter devices
-```
-
-Resolve problems in the Flutter and Android toolchain checks before starting.
-For this Android activity, missing Xcode or Windows desktop build tools do not
-prevent the required Android work. Use Java 17 or a compatible Android Studio
-bundled JDK locally; GitHub's Android build explicitly uses Java 17.
-
-## 2. Get your own working copy
+## 1. Get your own working copy
 
 ### Fork this repository on GitHub
 
@@ -57,29 +30,28 @@ Extract the ZIP, then open the project folder containing
 `pubspec.yaml`, `README.md`, `LAB.md`, `lib`, and `android`.
 The lab explains how to connect this folder to your own empty GitHub repository.
 
-## 3. Run the starter locally
+## 2. Open and run in Android Studio
 
-All project commands in this activity run from the folder containing
-`pubspec.yaml`. Do not run them from `lib`, `android`, or `.github`.
+1. In **Android Studio**, select **Open** and choose the project folder containing
+   `pubspec.yaml`. Open the Flutter project root, not its `android` subfolder.
+2. Install the project dependencies: click **Pub get** in `pubspec.yaml`, or run
+   the following in Android Studio's terminal:
 
-```text
-flutter pub get
-flutter run
-```
+   ```text
+   flutter pub get
+   ```
 
-If Flutter offers several devices, select the **Android emulator**, not Windows
-or a browser. You can also use the device ID shown by `flutter devices`:
-
-```text
-flutter run -d emulator-5554
-```
+3. Start your Android emulator in **Device Manager** and wait for its home screen.
+4. Open **`lib/main.dart`**, select the emulator in the device selector, and click
+   **Run ▶**. Wait for the app to install and open.
 
 The screen should show **Counter Lab**, a count of **0**, and a **+** button.
-Tap **+** three times: the count should become **3**. A full app restart resets
-the count to zero; this app deliberately has no persistence.
+Tap **+** three times: the count should become **3**. A full restart resets the
+count to zero; this app deliberately has no persistence.
 
-Leave this app running for the first lab checkpoint. Press **q** in the Flutter
-terminal to stop a `flutter run` session when needed.
+Once it runs, continue with **[LAB.md](LAB.md)**. Use Android Studio's **Stop**
+button before starting another Run session. Run later terminal commands from
+the project root containing `pubspec.yaml`.
 
 ## Project map
 
@@ -114,22 +86,14 @@ This activity delivers a **debug APK for classroom testing**. It does not publis
 to Google Play or configure production signing. No cloud credentials, database,
 Firebase account, or custom GitHub secret is required.
 
-## Troubleshooting setup
+## If the app does not start
 
-| Symptom | What to check |
-| --- | --- |
-| `flutter` not recognized | Add the Flutter SDK's `bin` directory to PATH and reopen the terminal |
-| Wrong SDK version | Use Flutter 3.47.1 so the local SDK matches the workflow |
-| No Android device | Start an emulator, wait for Android to boot, then run `flutter devices` |
-| Emulator installation or stop timeout | Stop Run/Debug; stop the emulator and use **Cold Boot Now**, then retry |
-| Android licenses/build tools missing | Run `flutter doctor`, accept licenses, and complete SDK Manager setup |
-| Gradle download appears slow | Keep internet access available; the first build downloads Android dependencies |
-| `flutter test` finds no tests initially | Expected: create the tests at Checkpoints 3 and 4 first |
+- Confirm the selected device is your **Android emulator**.
+- For an emulator timeout, stop Run/Debug, use **Cold Boot Now**, and retry.
+- Allow the first build time to download its Android dependencies.
 
 ## References
 
-- [Flutter installation](https://docs.flutter.dev/install)
-- [Android setup for Flutter](https://docs.flutter.dev/platform-integration/android/setup)
 - [Flutter testing](https://docs.flutter.dev/testing/overview)
 - Teaching structure inspired by [MERN Notes README](https://github.com/chakirouAlabani/mern-notes/blob/main/README.md)
   and its [incremental student lab](https://github.com/chakirouAlabani/mern-notes/blob/main/docs/student-lab.md).
