@@ -8,27 +8,15 @@ code, run the tests, build an Android APK, and make it available to download.
 working **+** button. Tests, minus/reset buttons, and the workflow are added
 during the activity; they are intentionally absent at the start.
 
-## 1. Get your own working copy
+## 1. Download the project
 
-### Fork this repository on GitHub 
+1. Open [flutter-ci on GitHub](https://github.com/chakirouAlabani/flutter-ci).
+2. Click **Code → Download ZIP**.
+3. Extract **flutter-ci-main.zip**.
+4. Use the extracted **flutter-ci-main** folder containing `pubspec.yaml`,
+   `README.md`, `LAB.md`, `lib`, and `android`.
 
-1. Fork [chakirouAlabani/flutter-ci](https://github.com/chakirouAlabani/flutter-ci) into your account.
-2. Copy **your fork's HTTPS clone URL** from its Code button.
-3. Replace `YOUR_FORK_URL` below with that complete URL:
-
-```text
-git clone YOUR_FORK_URL flutter-ci
-cd flutter-ci
-```
-
-Do not push to my repository. Work on your own **main** branch.
-If GitHub asks you to enable Actions in a fork, enable them from its Actions tab.
-
-### If you use a ZIP (Recommended)
-
-Extract the ZIP, then open the project folder containing
-`pubspec.yaml`, `README.md`, `LAB.md`, `lib`, and `android`.
-
+You will create your own GitHub repository later in the lab.
 
 ## 2. Open and run in Android Studio
 
