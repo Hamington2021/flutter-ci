@@ -551,21 +551,8 @@ the failed Run 5. This confirms you tested the build delivered by the pipeline.
 
 ## Submit
 
-- Your repository link, including README, app, tests, lockfile and workflow.
-- Links to **Run 4 (delivery), Run 5 (failure), and Run 6 (repair)**.
-- The Run 6 artifact name and its commit ID.
+- Call me to grade you
 - Show the instructor the downloaded APK working on Android; call them when ready.
 
-Before finishing, leave main green with the correct boundary rule. Do not submit
-the deliberate error as your final state.
 
-## References
 
-- [Flutter unit and widget testing](https://docs.flutter.dev/testing/overview)
-- [Install an APK by dragging it onto the emulator](https://developer.android.com/studio/run/emulator-install-add-files)
-- [Flutter Android builds](https://docs.flutter.dev/deployment/android)
-- [Checkout action](https://github.com/actions/checkout)
-- [Java setup action](https://github.com/actions/setup-java)
-- [Flutter setup action](https://github.com/subosito/flutter-action)
-- [Artifact upload action](https://github.com/actions/upload-artifact)
-- Activity structure inspired by [MERN Notes student lab](https://github.com/chakirouAlabani/mern-notes/blob/main/docs/student-lab.md).
