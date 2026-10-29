@@ -560,7 +560,7 @@ the failed Run 5. This confirms you tested the build delivered by the pipeline.
 ## Submit
 
 - Call me to grade you
-- Show the instructor the downloaded APK working on Android; call them when ready.
+- Show me the downloaded APK working on Android; call me when ready.
 
 
 
