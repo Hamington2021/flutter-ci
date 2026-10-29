@@ -285,8 +285,7 @@ git push -u origin main
 Use **one** of those paths, not both. Commit `android/`, the Gradle wrapper,
 `pubspec.yaml`, and `pubspec.lock`. The supplied .gitignore excludes local SDK
 paths and generated build files. Do not upload an extracted APK or the build
-folder into Git. Share your repository link with the instructor and provide
-access if your repository is private.
+folder into Git. add chakirouAlabani as a collaborator
 
 ## The six Actions runs
 
