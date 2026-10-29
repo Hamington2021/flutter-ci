@@ -511,10 +511,18 @@ Keep your **Android emulator running**. No installation commands are needed.
 5. Wait for installation to finish, then open **Counter Lab** from the emulator's
    app launcher.
 
-**If installation fails because Counter Lab is already installed:** on the emulator,
-open **Settings → Apps → Counter Lab → Uninstall**, then drag the APK onto the
-screen again. The local and GitHub builds may use different debug signing keys.
-Uninstalling removes this sample app's data.
+### If you see INSTALL_FAILED_UPDATE_INCOMPATIBLE
+
+The error may say **"signatures do not match newer version"**. The emulator
+already has your locally built Counter Lab, and the GitHub APK uses a different
+signing key. Android cannot replace the installed app with that APK.
+
+1. On the emulator, open **Settings → Apps → Counter Lab → Uninstall**.
+2. Drag the downloaded **app-debug.apk** onto the emulator screen again.
+3. Wait for installation to finish, then open **Counter Lab** from the app launcher.
+
+Keep the emulator running throughout. Uninstalling removes Counter Lab's data;
+this sample has no saved data.
 
 **Use the APK downloaded from GitHub.** Do not press Flutter Run afterward:
 that would replace it with a local build.
