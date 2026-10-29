@@ -260,19 +260,11 @@ counter test in this starter, so the final count should be exactly seven.
 
 ## Before the first GitHub run — Prepare your repository
 
-If you cloned your fork in the README, run `git remote -v` and confirm `origin`
-points to **your** fork. Commit your app and tests, then push:
+Create an **empty GitHub repository** in your account, without adding a README,
+license, or .gitignore on GitHub. The downloaded ZIP has no Git history.
 
-```text
-git add .
-git commit -m "feat: add counter rules and seven tests"
-git push -u origin main
-```
-
-If you started from a ZIP instead, create an **empty GitHub repository** in your
-account, without adding a README, license, or .gitignore on GitHub. From the
-local folder containing `pubspec.yaml`, run the following. Replace
-`YOUR_REPOSITORY_URL` with the full HTTPS URL of that empty repository:
+From the extracted project folder containing `pubspec.yaml`, run the following.
+Replace `YOUR_REPOSITORY_URL` with the full HTTPS URL of your empty repository:
 
 ```text
 git init -b main
@@ -282,7 +274,7 @@ git remote add origin YOUR_REPOSITORY_URL
 git push -u origin main
 ```
 
-Use **one** of those paths, not both. Commit `android/`, the Gradle wrapper,
+Commit `android/`, the Gradle wrapper,
 `pubspec.yaml`, and `pubspec.lock`. The supplied .gitignore excludes local SDK
 paths and generated build files. Do not upload an extracted APK or the build
 folder into Git. add chakirouAlabani as a collaborator
@@ -510,38 +502,24 @@ is uploaded with **Run 6's commit ID**. Save this successful run link.
 
 ## Checkpoint 10 — Install the APK produced by GitHub
 
-Download the artifact from **Run 6's summary**, then extract its ZIP to find
-**app-debug.apk**. Do not use an APK from your local build folder. Stop the
-local Flutter Run/Debug session before installing the downloaded build.
+Keep your **Android emulator running**. No installation commands are needed.
 
-On Windows PowerShell, initialize the ADB path and list devices:
+1. Stop the local Flutter **Run/Debug** session, but leave the emulator open.
+2. Download the APK artifact from **Run 6's summary → Artifacts**.
+3. Extract the downloaded ZIP and locate **app-debug.apk**.
+4. Drag **app-debug.apk** from File Explorer onto the **emulator screen**.
+5. Wait for installation to finish, then open **Counter Lab** from the emulator's
+   app launcher.
 
-```powershell
-$adbPath = "$env:LOCALAPPDATA\Android\Sdk\platform-tools\adb.exe"
-& $adbPath devices
-$apkPath = Read-Host "Paste the full path to the extracted app-debug.apk"
-& $adbPath -s emulator-5554 install -r $apkPath
-```
+**If installation fails because Counter Lab is already installed:** on the emulator,
+open **Settings → Apps → Counter Lab → Uninstall**, then drag the APK onto the
+screen again. The local and GitHub builds may use different debug signing keys.
+Uninstalling removes this sample app's data.
 
-Replace `emulator-5554` only if your device list shows a different ID. Paste the
-file path without surrounding quote characters at the prompt. If your SDK is
-installed elsewhere, change `$adbPath` to that SDK's `platform-tools/adb.exe`.
-On macOS/Linux with ADB on PATH, the equivalent installation is
-`adb -s DEVICE_ID install -r /path/to/app-debug.apk`.
+**Use the APK downloaded from GitHub.** Do not press Flutter Run afterward:
+that would replace it with a local build.
 
-If installation reports **INSTALL_FAILED_UPDATE_INCOMPATIBLE**, your local and
-GitHub debug keys differ. Uninstall **only this counter app**, then install again:
-
-```powershell
-& $adbPath -s emulator-5554 uninstall ca.champlain.flutter_ci_counter
-& $adbPath -s emulator-5554 install $apkPath
-```
-
-Uninstalling removes that counter app's data. This sample has no saved data or
-accounts. Do not uninstall your Task Manager or other course projects.
-
-Open **Counter Lab** from the Android app launcher. Do not press Flutter Run,
-which would replace the downloaded APK with a fresh local build. Verify:
+Test these behaviours:
 
 | Behaviour | Expected result |
 | --- | --- |
@@ -584,6 +562,7 @@ the deliberate error as your final state.
 ## References
 
 - [Flutter unit and widget testing](https://docs.flutter.dev/testing/overview)
+- [Install an APK by dragging it onto the emulator](https://developer.android.com/studio/run/emulator-install-add-files)
 - [Flutter Android builds](https://docs.flutter.dev/deployment/android)
 - [Checkout action](https://github.com/actions/checkout)
 - [Java setup action](https://github.com/actions/setup-java)
