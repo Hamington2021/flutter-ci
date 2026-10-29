@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'counter.dart';
+
 void main() => runApp(const CounterApp());
 
 class CounterApp extends StatelessWidget {
@@ -22,7 +24,7 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> {
-  int _value = 0;
+  final Counter _counter = Counter();
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -33,15 +35,32 @@ class _CounterPageState extends State<CounterPage> {
         children: [
           const Text('Current count'),
           Text(
-            '$_value',
+            '${_counter.value}',
             key: const ValueKey('counter-value'),
             style: Theme.of(context).textTheme.displayLarge,
           ),
           const SizedBox(height: 20),
-          FilledButton(
-            key: const ValueKey('increment'),
-            onPressed: () => setState(() => _value++),
-            child: const Text('+'),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              FilledButton(
+                key: const ValueKey('decrement'),
+                onPressed: () => setState(_counter.decrement),
+                child: const Text('-'),
+              ),
+              const SizedBox(width: 12),
+              FilledButton(
+                key: const ValueKey('increment'),
+                onPressed: () => setState(_counter.increment),
+                child: const Text('+'),
+              ),
+              const SizedBox(width: 12),
+              OutlinedButton(
+                key: const ValueKey('reset'),
+                onPressed: () => setState(_counter.reset),
+                child: const Text('Reset'),
+              ),
+            ],
           ),
         ],
       ),
